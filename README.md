@@ -30,6 +30,3 @@ File
 
 ---
 
-Let me know if you also want to upload `requirements.txt`, `.gitignore`, or make it runnable on Colab or Hugging Face Spaces. I'm down.
-
-
