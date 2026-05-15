@@ -1,4 +1,3 @@
-# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -19,24 +18,16 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-
-# Environments
 .env
 .venv
 env/
 venv/
 ENV/
-
-# Jupyter Notebook
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
-
-# Project specific
 data/*.csv
 models/*.h5
 models/*.joblib
 *.log
-
-# OS
 .DS_Store
 Thumbs.db
