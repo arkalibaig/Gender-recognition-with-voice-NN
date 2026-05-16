@@ -19,6 +19,8 @@ These features capture various nuances of voice timbre, pitch, and rhythm that a
 *   `models/`: Saved model architectures and trained weights.
 *   `notebooks/`: Jupyter notebooks for exploratory data analysis (EDA), model research, and evaluation.
 *   `scripts/`: Python scripts for data preprocessing, automated training, and evaluation.
+*   `UI/`: Modern HTML/CSS frontend for the live demo.
+*   `app.py`: FastAPI backend to serve the model for real-time inference.
 *   `requirements.txt`: Project dependencies.
 
 ## Technical Stack
@@ -26,6 +28,8 @@ These features capture various nuances of voice timbre, pitch, and rhythm that a
 *   **Data Processing:** Pandas, NumPy, Scikit-learn
 *   **Feature Extraction:** Librosa (used for extracting acoustic features)
 *   **Model Management:** Joblib (for saving/loading scalers), H5 (for Keras models)
+*   **Backend:** FastAPI, Uvicorn
+*   **Frontend:** HTML5, CSS3, JavaScript
 
 ## How to Run
 
@@ -33,6 +37,7 @@ These features capture various nuances of voice timbre, pitch, and rhythm that a
 Ensure you have Python 3.8+ installed. Then, install the required libraries:
 ```bash
 pip install -r requirements.txt
+pip install fastapi uvicorn python-multipart
 ```
 
 ### 2. Preprocess Data and Train the Model
@@ -49,7 +54,16 @@ python scripts/predict.py --audio_file path/to/your/audio.wav
 ```
 The script will output the predicted gender and confidence score.
 
-### 4. Research and Development
+### 4. Live Demo (Web Interface)
+You can run a local server to use the interactive web UI:
+1. Start the backend server:
+   ```bash
+   python app.py
+   ```
+2. Open `UI/index.html` in your web browser.
+3. Upload an audio file to see the prediction in real-time.
+
+### 5. Research and Development
 Explore the notebooks in `notebooks/` for detailed analysis, model architecture insights, and evaluation metrics.
 
 ## Model Performance
@@ -63,9 +77,8 @@ We welcome contributions! Please follow these steps:
 4.  Submit a pull request.
 
 ## Future Work
-*   Explore alternative model architectures (e.g., Convolutional Neural Networks (CNNs), Recurrent Neural Networks (RNNs)) for potentially improved performance.
+*   Explore alternative model architectures (e.g., Convolutional Neural Networks (CNN), Recurrent Neural Networks (RNN)) for potentially improved performance.
 *   Enhance robustness against background noise in audio samples.
-*   Develop a simple API or web service for real-time gender prediction.
 
 ## License
 This project is licensed under the MIT License.
