@@ -5,14 +5,19 @@ A professional-grade Artificial Neural Network (ANN) for classifying gender base
 ## Project Overview
 This project implements a deep learning approach to identify gender from processed vocal data. It uses a multi-layer perceptron (MLP) architecture built with TensorFlow/Keras, achieving near-perfect accuracy on standardized acoustic datasets.
 
-## Acoustic Features
-The model utilizes common acoustic features extracted from raw audio. These include:
-*   **Mel-Frequency Cepstral Coefficients (MFCCs):** Represent the short-term power spectrum of a sound.
-*   **Chroma Features:** Relate to the 12 different pitch classes.
-*   **Mel Spectrogram:** A representation of the audio spectrum.
-*   **Spectral Contrast:** Measures the difference between peaks and valleys in the spectrum.
+### Recent Fixes
+*   **Feature Extraction Alignment:** Resolved a critical mismatch between training and inference feature extraction. Specifically, corrected the spectral contrast calculation and ensured the feature vector exactly matches the 43-dimensional input expected by the model, preventing incorrect high-confidence predictions on real audio.
+*   **Regularization:** Enhanced model robustness against overfitting by introducing L2 regularization and dropout layers in the training pipeline.
 
-These features capture various nuances of voice timbre, pitch, and rhythm that are indicative of gender.
+## Acoustic Features
+The model utilizes 43 acoustic features extracted from raw audio:
+*   **Spectral Features:** Centroid (mean, std), Bandwidth (mean, std), Contrast (mean), Flatness (mean), Rolloff (mean).
+*   **Time Domain Features:** Zero Crossing Rate (mean), RMS Energy (mean).
+*   **Pitch Features:** Mean, Min, Max, and Std of the fundamental frequency (extracted via Yin algorithm).
+*   **Statistical Measures:** Spectral skew and kurtosis.
+*   **Energy Measures:** Energy entropy and log energy.
+*   **MFCCs:** Mean and standard deviation for the first 13 Mel-Frequency Cepstral Coefficients.
+
 
 ## Directory Structure
 *   `data/`: Contains the processed acoustic feature dataset.
