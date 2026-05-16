@@ -37,7 +37,14 @@ def extract_features(audio_path):
         np.std(spectral_centroids),
         np.mean(spectral_bandwidths),
         np.std(spectral_bandwidths),
-        np.mean(spectral_contrast),
+    ]
+    
+    # Add all 7 bands of spectral contrast
+    # spectral_contrast is (7, frames), we take mean across frames for each band
+    for band in range(7):
+        features.append(np.mean(spectral_contrast[band]))
+        
+    features.extend([
         np.mean(spectral_flatness),
         np.mean(spectral_rolloff),
         np.mean(zero_crossing_rate),
@@ -51,7 +58,8 @@ def extract_features(audio_path):
         # Energy Entropy (simplified)
         -np.sum(rms_energy**2 * np.log(rms_energy**2 + 1e-10)), 
         np.log(np.sum(y**2) + 1e-10)
-    ]
+    ])
+
     
     # Add MFCC means and stds
     for i in range(13):
